@@ -8,10 +8,13 @@ module DearInventory
 
       sig { returns(Symbol) }
       attr_reader :action
+
       sig { returns(T.class_of(DearInventory::Model)) }
       attr_reader :model
+
       sig { returns(DearInventory::Parameters) }
       attr_reader :params
+
       sig { returns(String) }
       attr_reader :uri
 

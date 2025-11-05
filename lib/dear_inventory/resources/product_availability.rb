@@ -29,7 +29,7 @@ module DearInventory
 
     sig { params(_endpoint: T.nilable(String)).returns(String) }
     def resource_uri(_endpoint)
-      self.class.const_get(:URI_BASE) + "/ref/productavailability"
+      "#{self.class.const_get(:URI_BASE)}/ref/productavailability"
     end
   end
 end

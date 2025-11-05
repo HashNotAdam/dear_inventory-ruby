@@ -74,6 +74,7 @@ module DearInventory
     )
     MAX_RETRIES = T.let(4, Integer)
     RETRY_DELAY = T.let(5, Integer)
+    private_constant :ERROR_MESSAGE_PREFIXES, :MAX_RETRIES, :RETRY_DELAY
 
     sig { params(error: StandardError).returns(DearInventory::Response) }
     def retry_request(error)

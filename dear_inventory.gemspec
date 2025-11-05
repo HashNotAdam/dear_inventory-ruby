@@ -16,8 +16,8 @@ Gem::Specification.new do |spec|
   spec.homepage = "https://morningcoffee.com.au"
   spec.license = "MIT"
 
-  spec.required_ruby_version = ">= 2.5.0"
-  spec.required_rubygems_version = ">= 1.8.11"
+  spec.required_ruby_version = ">= 3.4.0"
+  spec.required_rubygems_version = ">= 3.6.0"
 
   spec.files = Dir.chdir(File.expand_path(__dir__)) do
     `git ls-files -z`.
@@ -29,18 +29,8 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_dependency "http", ">= 5.0", "< 6.0"
+  spec.add_dependency "logger"
   spec.add_dependency "sorbet-runtime"
 
-  spec.add_development_dependency "bundler", "~> 2.0"
-  spec.add_development_dependency "byebug"
-  spec.add_development_dependency "dotenv"
-  spec.add_development_dependency "pry-byebug"
-  spec.add_development_dependency "rake", ">= 12.3.3"
-  spec.add_development_dependency "rspec", "~> 3.0"
-  spec.add_development_dependency "rubocop", "~> 0.71"
-  spec.add_development_dependency "rubocop-performance"
-  spec.add_development_dependency "rubocop-rspec"
-  spec.add_development_dependency "sorbet"
-  spec.add_development_dependency "vcr"
-  spec.add_development_dependency "webmock"
+  spec.metadata["rubygems_mfa_required"] = "true"
 end

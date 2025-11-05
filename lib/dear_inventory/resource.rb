@@ -27,6 +27,7 @@ module DearInventory
     private
 
     URI_BASE = T.let("https://inventory.dearsystems.com/ExternalApi/v2", String)
+    private_constant :URI_BASE
 
     sig { params(_endpoint: T.nilable(String)).returns(String) }
     def resource_uri(_endpoint)

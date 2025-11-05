@@ -27,7 +27,7 @@ module DearInventory
         raise(
           ArgumentError,
           "#{error_value} is not an acceptable environment; " \
-            "please use either :production or :test"
+          "please use either :production or :test"
         )
       end
 

@@ -8,6 +8,7 @@ module DearInventory
 
     sig { returns(DearInventory::Models::Request) }
     attr_reader :request
+
     sig { returns(HTTP::Response) }
     attr_reader :response
 
@@ -164,23 +165,17 @@ module DearInventory
     API_LIMIT_ERROR = T.let(
       "You have reached 60 calls per 60 seconds API limit.", String
     )
+    private_constant :API_LIMIT_ERROR
 
-    # rubocop:disable Metrics/AbcSize
     sig { returns(DearInventory::Error) }
     def raise_error
-      if http_status == 400
-        raise T.unsafe(DearInventory::BadRequestError).new(error, self)
-      end
+      raise T.unsafe(DearInventory::BadRequestError).new(error, self) if http_status == 400
 
-      if http_status == 503 && error == API_LIMIT_ERROR
-        raise T.unsafe(DearInventory::APILimitError)
-      end
+      raise T.unsafe(DearInventory::APILimitError) if http_status == 503 && error == API_LIMIT_ERROR
 
       raise T.unsafe(DearInventory::Error).
         new("Unknown error (#{http_status}): #{error}")
     end
-    # rubocop:enable Metrics/AbcSize
-
     sig do
       params(
         response: DearInventory::Response,

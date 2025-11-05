@@ -1,4 +1,4 @@
-# typed: true
+# typed: false
 # frozen_string_literal: true
 
 module DearInventory
@@ -8,11 +8,8 @@ module DearInventory
 
       RE_RECORD_INTERVAL = T.let(86_400, Integer)
 
-      sig { params(path: String).void }
-      def self.with_cassette(path)
-        ::VCR.use_cassette(path, re_record_interval: RE_RECORD_INTERVAL) do
-          yield
-        end
+      def self.with_cassette(path, &)
+        ::VCR.use_cassette(path, re_record_interval: RE_RECORD_INTERVAL, &)
       end
     end
   end

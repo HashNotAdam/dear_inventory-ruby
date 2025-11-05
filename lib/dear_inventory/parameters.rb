@@ -171,7 +171,7 @@ module DearInventory
         return params_class.new(params) unless params_class.nil?
 
         message = "No parameters class can be found for resource, " \
-          "#{resource_class}, with endpoint #{endpoint}"
+                  "#{resource_class}, with endpoint #{endpoint}"
         raise ArgumentError, message
       end
     end

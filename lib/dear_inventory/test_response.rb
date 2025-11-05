@@ -8,6 +8,7 @@ module DearInventory
 
     sig { returns(DearInventory::Models::Request) }
     attr_reader :request
+
     sig { returns(HTTP::Response) }
     attr_reader :response
 

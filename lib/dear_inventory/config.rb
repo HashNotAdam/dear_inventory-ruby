@@ -18,7 +18,7 @@ module DearInventory
 
     sig { void }
     def initialize
-      @logger = Logger.new(STDOUT)
+      @logger = Logger.new($stdout)
       @logger.level = Logger::WARN
     end
 
@@ -44,9 +44,10 @@ module DearInventory
     def require_parameter(param)
       require(param)
     rescue ArgumentError => e
-      message = e.message + "\n" \
-        "Alternatively, you can pass dynamic values with your request " \
-        "parameters"
+      message = <<~MESSAGE
+        #{e.message}
+        Alternatively, you can pass dynamic values with your request parameters
+      MESSAGE
       raise ArgumentError, message
     end
 
@@ -56,10 +57,12 @@ module DearInventory
     def require_error(param)
       raise(
         ArgumentError,
-        "#{param} is required but hasn't been set.\n" \
-          "DearInventory.configure do |config|\n" +
-          %(  config.#{param} = "value") + "\n" \
-          "end"
+        <<~MESSAGE
+          #{param} is required but hasn't been set.
+          DearInventory.configure do |config|
+            config.#{param} = "value"
+          end
+        MESSAGE
       )
     end
   end

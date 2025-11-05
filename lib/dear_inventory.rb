@@ -1,4 +1,4 @@
-# typed: strong
+# typed: false
 # frozen_string_literal: true
 
 require "http"
@@ -134,11 +134,8 @@ module DearInventory
     sig { returns(Config) }
     attr_reader :config
 
-    # rubocop:disable Lint/UnusedMethodArgument
-    sig { params(block: T.proc.params(config: Config).void).void }
-    def configure(&block)
+    def configure(&)
       yield config
     end
-    # rubocop:enable Lint/UnusedMethodArgument
   end
 end

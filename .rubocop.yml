@@ -1,9 +1,10 @@
-require:
+plugins:
   - rubocop-performance
   - rubocop-rspec
 
 AllCops:
-  TargetRubyVersion: 2.5
+  TargetRubyVersion: 3.4
+  NewCops: enable
   Exclude:
     - bin/**/*
 
@@ -30,6 +31,9 @@ Lint/AmbiguousBlockAssociation:
   Exclude:
     - spec/**/*
 
+Lint/MissingSuper:
+  Enabled: false
+
 Lint/RaiseException:
   Enabled: true
 
@@ -46,6 +50,9 @@ Metrics/ClassLength:
   Exclude:
     - lib/dear_inventory/models/**/*
 
+Naming/VariableNumber:
+  Enabled: false
+
 RSpec/BeforeAfterAll:
   Enabled: false
 
@@ -58,7 +65,7 @@ RSpec/MultipleExpectations:
 RSpec/NestedGroups:
   Max: 4
 
-RSpec/FilePath:
+RSpec/SpecFilePathFormat:
   Enabled: false
 
 Security/Eval:

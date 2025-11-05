@@ -9,9 +9,7 @@ module DearInventory
     def is_a?(comparison_class)
       return true if super
 
-      if T.unsafe(self).class == Class
-        return T.unsafe(self).ancestors.include?(comparison_class)
-      end
+      return T.unsafe(self).ancestors.include?(comparison_class) if T.unsafe(self).instance_of?(Class)
 
       false
     end

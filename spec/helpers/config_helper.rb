@@ -9,8 +9,8 @@ module DearInventory
       sig { void }
       def self.configure
         DearInventory.configure do |config|
-          config.account_id = ENV["ACCOUNT_ID"]
-          config.key = ENV["KEY"]
+          config.account_id = ENV.fetch("ACCOUNT_ID", nil)
+          config.key = ENV.fetch("KEY", nil)
         end
       end
     end

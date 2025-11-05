@@ -1,4 +1,4 @@
-# typed: true
+# typed: false
 # frozen_string_literal: true
 
 require "bigdecimal/util"
@@ -8,6 +8,7 @@ module DearInventory
   class Model
     extend T::Sig
     extend T::Helpers
+
     abstract!
 
     extend DearInventory::IsASubclass
@@ -22,9 +23,7 @@ module DearInventory
     end
     def self.fields(fields)
       ancestor = T.must(ancestors[1])
-      if ancestor.const_defined?(:FIELDS)
-        fields = ancestor.const_get(:FIELDS).merge(fields)
-      end
+      fields = ancestor.const_get(:FIELDS).merge(fields) if ancestor.const_defined?(:FIELDS)
       const_set(:FIELDS, fields.freeze)
 
       define_readers
@@ -35,17 +34,12 @@ module DearInventory
       enumerate_fields do |_, specifications|
         __send__(:attr_reader, specifications[:name])
 
-        if specifications[:type] == :ResultSet
-          alias_method :records, specifications[:name]
-        end
+        alias_method :records, specifications[:name] if specifications[:type] == :ResultSet
       end
     end
 
-    sig { void }
-    def self.enumerate_fields
-      const_get(:FIELDS).each do |response_name, specifications|
-        yield(response_name, specifications)
-      end
+    def self.enumerate_fields(&)
+      const_get(:FIELDS).each(&)
     end
 
     alias initialize_abstract initialize

@@ -6,6 +6,7 @@ module DearInventory
     extend T::Sig
 
     extend T::Helpers
+
     abstract!
 
     DEFAULT_OPTIONS = T.let(
