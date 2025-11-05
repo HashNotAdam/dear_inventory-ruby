@@ -1,19 +1,12 @@
-# typed: strict
 # frozen_string_literal: true
 
 module DearInventory
   class Sale < Resource
     class << self
-      extend T::Sig
-
       # Sales
       #
       # @param params [Hash] URL query string parameters that conform to
       #   DearInventory::Parameters::Sale::Index
-      sig do
-        params(params: T::Hash[Symbol, T.untyped]).
-          returns(DearInventory::Response)
-      end
       def index(params = {})
         new.request(
           :get,
@@ -29,10 +22,6 @@ module DearInventory
       #
       # @param params [Hash] URL query string parameters that conform to
       #   DearInventory::Parameters::Sale::Show
-      sig do
-        params(params: T::Hash[Symbol, T.untyped]).
-          returns(DearInventory::Response)
-      end
       def show(params = {})
         new.request(
           :get,
@@ -46,10 +35,6 @@ module DearInventory
       #
       # @param params [Hash] URL query string parameters that conform to
       #   DearInventory::Parameters::Sale::Delete
-      sig do
-        params(params: T::Hash[Symbol, T.untyped]).
-          returns(DearInventory::Response)
-      end
       def delete(params = {})
         new.request(
           :delete,
@@ -62,7 +47,6 @@ module DearInventory
 
     private
 
-    sig { params(endpoint: T.nilable(String)).returns(String) }
     def resource_uri(endpoint)
       case endpoint
       when "index"

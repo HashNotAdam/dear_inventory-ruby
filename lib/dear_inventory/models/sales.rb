@@ -1,11 +1,8 @@
-# typed: strict
 # frozen_string_literal: true
 
 module DearInventory
   module Models
     class Sales < DearInventory::Model
-      extend T::Sig
-
       fields(
         SaleID: {
           name: :id,
@@ -128,10 +125,8 @@ module DearInventory
           type: :String,
         }
       )
-
-      sig { returns(DearInventory::Response) }
       def full_record
-        DearInventory::Sale.show(id: T.unsafe(self).id)
+        DearInventory::Sale.show(id: id)
       end
     end
   end

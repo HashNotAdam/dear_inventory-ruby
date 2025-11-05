@@ -1,4 +1,3 @@
-# typed: ignore
 # frozen_string_literal: true
 
 # Usually this class wouldn't be called directly, the environment can be managed

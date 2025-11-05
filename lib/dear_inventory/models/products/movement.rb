@@ -1,4 +1,3 @@
-# typed: strong
 # frozen_string_literal: true
 
 # This model has been designed to match the Dear API documentation, however,
@@ -11,8 +10,6 @@ module DearInventory
   module Models
     class Products < DearInventory::Model
       class Movement < DearInventory::Model
-        extend T::Sig
-
         fields(
           TaskID: {
             name: :task_id,

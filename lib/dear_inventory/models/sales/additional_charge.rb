@@ -1,12 +1,9 @@
-# typed: strong
 # frozen_string_literal: true
 
 module DearInventory
   module Models
     class Sales < DearInventory::Model
       class AdditionalCharge < DearInventory::Model
-        extend T::Sig
-
         fields(
           Description: {
             name: :description,

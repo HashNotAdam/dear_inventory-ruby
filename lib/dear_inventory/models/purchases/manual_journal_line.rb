@@ -1,12 +1,9 @@
-# typed: strong
 # frozen_string_literal: true
 
 module DearInventory
   module Models
     class Purchases < DearInventory::Model
       class ManualJournalLine < DearInventory::Model
-        extend T::Sig
-
         fields(
           Reference: {
             name: :reference,

@@ -1,11 +1,8 @@
-# typed: strong
 # frozen_string_literal: true
 
 module DearInventory
   module Models
     class AdditionalAttributes < DearInventory::Model
-      extend T::Sig
-
       fields(
         AdditionalAttribute1: {
           name: :additional_attribute_1,

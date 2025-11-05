@@ -1,11 +1,8 @@
-# typed: strict
 # frozen_string_literal: true
 
 module DearInventory
   module Models
     class Purchases < DearInventory::Model
-      extend T::Sig
-
       fields(
         ID: {
           name: :id,
@@ -120,14 +117,12 @@ module DearInventory
           type: :Guid,
         }
       )
-
-      sig { returns(DearInventory::Response) }
       def full_record
-        case T.unsafe(self).type
+        case type
         when "Advanced Purchase", "Service Purchase"
-          DearInventory::AdvancedPurchase.show(id: T.unsafe(self).id)
+          DearInventory::AdvancedPurchase.show(id: id)
         else
-          DearInventory::Purchase.show(id: T.unsafe(self).id)
+          DearInventory::Purchase.show(id: id)
         end
       end
     end

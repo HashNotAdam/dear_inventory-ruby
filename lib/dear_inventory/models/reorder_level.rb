@@ -1,11 +1,8 @@
-# typed: strong
 # frozen_string_literal: true
 
 module DearInventory
   module Models
     class ReorderLevel < DearInventory::Model
-      extend T::Sig
-
       fields(
         LocationID: {
           name: :location_id,

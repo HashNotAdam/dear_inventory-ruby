@@ -1,12 +1,9 @@
-# typed: strict
 # frozen_string_literal: true
 
 module DearInventory
   class Parameters
     module Sale
       class Index < DearInventory::Parameters
-        extend T::Sig
-
         fields(
           page: {
             property: :Page,

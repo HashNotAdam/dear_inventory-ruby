@@ -1,11 +1,6 @@
-# typed: false
 # frozen_string_literal: true
 
 RSpec.describe DearInventory::Model do
-  it "can not be directly instantiated" do
-    expect { described_class.new }.to raise_error(RuntimeError)
-  end
-
   context "when acting on a child class" do
     let(:associated_test_model) do
       Class.new(described_class)

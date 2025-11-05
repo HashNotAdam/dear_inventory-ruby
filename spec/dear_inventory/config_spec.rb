@@ -1,4 +1,3 @@
-# typed: false
 # frozen_string_literal: true
 
 RSpec.describe DearInventory::Config do
@@ -19,7 +18,7 @@ RSpec.describe DearInventory::Config do
       end
 
       specify do
-        expect { config.environment = "production" }.to raise_error(TypeError)
+        expect { config.environment = "production" }.to raise_error(ArgumentError)
       end
     end
   end

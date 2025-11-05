@@ -1,4 +1,3 @@
-# typed: strong
 # frozen_string_literal: true
 
 module DearInventory
@@ -6,8 +5,6 @@ module DearInventory
     class Sales < DearInventory::Model
       class Fulfilments
         class Ship < DearInventory::Model
-          extend T::Sig
-
           fields(
             Status: {
               name: :status,

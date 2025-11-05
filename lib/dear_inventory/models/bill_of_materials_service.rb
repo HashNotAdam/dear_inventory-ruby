@@ -1,11 +1,8 @@
-# typed: strong
 # frozen_string_literal: true
 
 module DearInventory
   module Models
     class BillOfMaterialsService < DearInventory::Model
-      extend T::Sig
-
       fields(
         ComponentProductID: {
           name: :component_product_id,

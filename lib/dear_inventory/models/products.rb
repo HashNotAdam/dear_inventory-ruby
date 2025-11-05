@@ -1,11 +1,8 @@
-# typed: strong
 # frozen_string_literal: true
 
 module DearInventory
   module Models
     class Products < DearInventory::Model
-      extend T::Sig
-
       fields(
         Total: {
           name: :total,

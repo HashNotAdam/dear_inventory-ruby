@@ -30,7 +30,6 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency "http", ">= 5.0", "< 6.0"
   spec.add_dependency "logger"
-  spec.add_dependency "sorbet-runtime"
 
   spec.metadata["rubygems_mfa_required"] = "true"
 end

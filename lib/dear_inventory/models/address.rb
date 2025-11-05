@@ -1,11 +1,8 @@
-# typed: strong
 # frozen_string_literal: true
 
 module DearInventory
   module Models
     class Address < DearInventory::Model
-      extend T::Sig
-
       fields(
         DisplayAddressLine1: {
           name: :display_address_line_1,

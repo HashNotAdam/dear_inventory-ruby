@@ -1,11 +1,8 @@
-# typed: strong
 # frozen_string_literal: true
 
 module DearInventory
   module Models
     class ShippingAddress < Address
-      extend T::Sig
-
       fields(
         Company: {
           name: :company,

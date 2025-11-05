@@ -1,12 +1,9 @@
-# typed: strong
 # frozen_string_literal: true
 
 module DearInventory
   module Models
     class Purchases < DearInventory::Model
       class Line < DearInventory::Model
-        extend T::Sig
-
         fields(
           ProductID: {
             name: :product_id,

@@ -1,4 +1,3 @@
-# typed: strong
 # frozen_string_literal: true
 
 module DearInventory
@@ -6,8 +5,6 @@ module DearInventory
     class Sales < DearInventory::Model
       class Fulfilments
         class PickPackLine < DearInventory::Model
-          extend T::Sig
-
           fields(
             ProductID: {
               name: :product_id,

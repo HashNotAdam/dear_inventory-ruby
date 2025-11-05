@@ -1,12 +1,9 @@
-# typed: strong
 # frozen_string_literal: true
 
 module DearInventory
   module Models
     class Customers < DearInventory::Model
       class Address < DearInventory::Model
-        extend T::Sig
-
         fields(
           TaskID: {
             name: :task_id,

@@ -1,19 +1,7 @@
-# typed: strict
 # frozen_string_literal: true
 
 module DearInventory
   class EndpointClass
-    extend T::Sig
-
-    sig do
-      params(
-        class_type: String,
-        resource_class: T.class_of(DearInventory::Resource),
-        endpoint: T.nilable(String)
-      ).returns(
-        T.nilable(T.class_of(DearInventory::Parameters))
-      )
-    end
     def self.call(class_type:, resource_class:, endpoint:)
       new(
         class_type: class_type,
@@ -22,28 +10,19 @@ module DearInventory
       ).call
     end
 
-    sig do
-      params(
-        class_type: String,
-        resource_class: T.class_of(DearInventory::Resource),
-        endpoint: T.nilable(String)
-      ).void
-    end
     def initialize(class_type:, resource_class:, endpoint:)
-      @class_type = T.let(class_type, String)
-      @resource_class = T.let(resource_class, T.untyped)
-      @endpoint = T.let(endpoint || "Index", String)
-      @class_name = T.let(nil, T.nilable(String))
+      @class_type = class_type
+      @resource_class = resource_class
+      @endpoint = endpoint || "Index"
+      @class_name = nil
     end
 
-    sig { returns(T.nilable(T.class_of(DearInventory::Parameters))) }
     def call
       Object.const_get(class_name) if Object.const_defined?(class_name)
     end
 
     private
 
-    sig { returns(String) }
     def class_name
       @class_name ||= begin
         name = ["DearInventory"]

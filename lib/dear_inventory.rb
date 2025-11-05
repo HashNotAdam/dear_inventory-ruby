@@ -1,8 +1,6 @@
-# typed: false
 # frozen_string_literal: true
 
 require "http"
-require "sorbet-runtime"
 
 require "dear_inventory/config"
 require "dear_inventory/environment"
@@ -124,14 +122,9 @@ require "dear_inventory/test_response"
 require "dear_inventory/version"
 
 module DearInventory
-  extend T::Sig
-
-  @config = T.let(Config.new, Config)
+  @config = Config.new
 
   class << self
-    extend T::Sig
-
-    sig { returns(Config) }
     attr_reader :config
 
     def configure(&)

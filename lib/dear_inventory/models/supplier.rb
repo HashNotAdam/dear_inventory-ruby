@@ -1,11 +1,8 @@
-# typed: strong
 # frozen_string_literal: true
 
 module DearInventory
   module Models
     class Supplier < DearInventory::Model
-      extend T::Sig
-
       fields(
         SupplierID: {
           name: :supplier_id,

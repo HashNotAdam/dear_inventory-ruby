@@ -1,11 +1,8 @@
-# typed: strong
 # frozen_string_literal: true
 
 module DearInventory
   module Models
     class Attachment < DearInventory::Model
-      extend T::Sig
-
       fields(
         ID: {
           name: :id,

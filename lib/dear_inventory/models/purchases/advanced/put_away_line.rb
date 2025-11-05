@@ -1,4 +1,3 @@
-# typed: strong
 # frozen_string_literal: true
 
 module DearInventory
@@ -6,8 +5,6 @@ module DearInventory
     class Purchases < DearInventory::Model
       module Advanced
         class PutAwayLine < StockLine
-          extend T::Sig
-
           fields(
             CardID: {
               name: :card_id,
