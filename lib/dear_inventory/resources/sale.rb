@@ -48,12 +48,9 @@ module DearInventory
     private
 
     def resource_uri(endpoint)
-      case endpoint
-      when "index"
-        "#{self.class.const_get(:URI_BASE)}/salelist"
-      when "show", "delete"
-        "#{self.class.const_get(:URI_BASE)}/sale"
-      end
+      return super unless endpoint == "index"
+
+      "#{self.class.const_get(:URI_BASE)}/salelist"
     end
   end
 end

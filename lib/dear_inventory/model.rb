@@ -38,10 +38,7 @@ module DearInventory
 
     def to_h
       {}.tap do |hash|
-        self.class.enumerate_fields do |_, specifications|
-          key = specifications[:name]
-          hash[key] = public_send(key)
-        end
+        attributes_to_hash(hash)
       end
     end
 
@@ -69,13 +66,30 @@ module DearInventory
         ::DateTime.parse(value) unless value.nil?
       when :Hash
         model.new(value)
+      when :Integer
+        value.to_i
       else
         value
       end
     end
-
     # rubocop:enable Metrics/CyclomaticComplexity
     # rubocop:enable Metrics/MethodLength
+
+    def attributes_to_hash(hash)
+      self.class.enumerate_fields do |_, specifications|
+        key = specifications[:name]
+        hash[key] = public_send(key)
+
+        nested_attributes_to_hash(hash[key]) if hash[key].is_a?(Array)
+      end
+    end
+
+    def nested_attributes_to_hash(collection)
+      collection.each_with_index do |record, index|
+        collection[index] = record.to_h
+      end
+    end
+
     def initialize_array_values_in_models(array, model)
       return if array.nil?
 

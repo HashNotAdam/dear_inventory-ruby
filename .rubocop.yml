@@ -46,9 +46,11 @@ Metrics/BlockLength:
     - spec/**/*
 
 Metrics/ClassLength:
-  Max: 150
+  Max: 115
   Exclude:
     - lib/dear_inventory/models/**/*
+    - lib/dear_inventory/parameters.rb
+    - lib/dear_inventory/parameters/**/*
 
 Naming/VariableNumber:
   Enabled: false

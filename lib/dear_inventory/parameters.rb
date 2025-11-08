@@ -122,7 +122,14 @@ module DearInventory
 
     def assign_params(params)
       params.each do |name, value|
-        public_send(:"#{name}=", value)
+        formatted_value =
+          if value.is_a?(Array)
+            value.map { |record| record.transform_keys { |key| key.to_s.titleize.delete(" ") } }
+          else
+            value
+          end
+
+        public_send(:"#{name}=", formatted_value)
       end
     end
   end

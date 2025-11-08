@@ -20,12 +20,11 @@ module DearInventory
 
       raise_error unless success?
 
-      body_copy = body
-      @model = @request.model.new(body_copy)
+      @model = @request.model.new(body)
       assign_values
     end
-
     # rubocop:enable Metrics/MethodLength
+
     def fields
       @fields ||= begin
         values = @request.model.const_get(:FIELDS).values.map do |field|
@@ -105,7 +104,7 @@ module DearInventory
       @uri ||= @response.uri.to_s
     end
 
-    protected
+    private
 
     def body
       string_body = @response.body.to_s
@@ -119,8 +118,6 @@ module DearInventory
     rescue JSON::ParserError
       string_body
     end
-
-    private
 
     def assign_values
       fields.each { |field| define_alias_method(field) }

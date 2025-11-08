@@ -26,8 +26,6 @@ module DearInventory
 
     def call; end
 
-    protected
-
     def raise_error(message)
       raise ValidationError, "#{@field_name} is invalid, #{message}"
     end

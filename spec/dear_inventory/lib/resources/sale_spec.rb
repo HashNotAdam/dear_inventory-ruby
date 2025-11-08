@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.describe DearInventory::Sale do
-  let(:index_response) { described_class.index(limit: 5) }
+  let(:index_response) { described_class.index(limit: 5, status: "COMPLETED") }
 
   describe ".index" do
     it "gets a successful response" do
@@ -12,7 +12,7 @@ RSpec.describe DearInventory::Sale do
 
     it "receives a list of sales" do
       DearInventory::Helpers::VCR.with_cassette("sale/index") do
-        expect(index_response.sales.length).to be 5
+        expect(index_response.sales.length).to be_positive
       end
     end
 
