@@ -8,7 +8,7 @@ module DearInventory
           id: {
             property: :ID,
             type: :Guid,
-            required: true,
+            required: false,
           },
           account_receivable: {
             property: :AccountReceivable,

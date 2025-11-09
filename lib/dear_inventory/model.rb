@@ -38,7 +38,12 @@ module DearInventory
 
     def to_h
       {}.tap do |hash|
-        attributes_to_hash(hash)
+        self.class.enumerate_fields do |_, specifications|
+          key = specifications[:name]
+          hash[key] = public_send(key)
+
+          nested_attributes_to_hash(hash[key]) if hash[key].is_a?(Array)
+        end
       end
     end
 
@@ -74,15 +79,6 @@ module DearInventory
     end
     # rubocop:enable Metrics/CyclomaticComplexity
     # rubocop:enable Metrics/MethodLength
-
-    def attributes_to_hash(hash)
-      self.class.enumerate_fields do |_, specifications|
-        key = specifications[:name]
-        hash[key] = public_send(key)
-
-        nested_attributes_to_hash(hash[key]) if hash[key].is_a?(Array)
-      end
-    end
 
     def nested_attributes_to_hash(collection)
       collection.each_with_index do |record, index|
