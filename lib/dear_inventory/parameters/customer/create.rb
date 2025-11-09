@@ -10,52 +10,52 @@ module DearInventory
             type: :String,
             required: true,
           },
-          additional_attribute1: {
+          additional_attribute_1: {
             property: :AdditionalAttribute1,
             type: :String,
             required: false,
           },
-          additional_attribute10: {
+          additional_attribute_10: {
             property: :AdditionalAttribute10,
             type: :String,
             required: false,
           },
-          additional_attribute2: {
+          additional_attribute_2: {
             property: :AdditionalAttribute2,
             type: :String,
             required: false,
           },
-          additional_attribute3: {
+          additional_attribute_3: {
             property: :AdditionalAttribute3,
             type: :String,
             required: false,
           },
-          additional_attribute4: {
+          additional_attribute_4: {
             property: :AdditionalAttribute4,
             type: :String,
             required: false,
           },
-          additional_attribute5: {
+          additional_attribute_5: {
             property: :AdditionalAttribute5,
             type: :String,
             required: false,
           },
-          additional_attribute6: {
+          additional_attribute_6: {
             property: :AdditionalAttribute6,
             type: :String,
             required: false,
           },
-          additional_attribute7: {
+          additional_attribute_7: {
             property: :AdditionalAttribute7,
             type: :String,
             required: false,
           },
-          additional_attribute8: {
+          additional_attribute_8: {
             property: :AdditionalAttribute8,
             type: :String,
             required: false,
           },
-          additional_attribute9: {
+          additional_attribute_9: {
             property: :AdditionalAttribute9,
             type: :String,
             required: false,
